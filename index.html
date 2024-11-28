@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Biestro Edoardo, Navoni Federico, Dilecce Riccardo">
+    <title>UML e OOP</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script rel="javascript" src="js/script.js"></script>
+</head>
+<body>
+    <div class="parallax-bg"></div>
+
+    <section class="section">
+        <div class="glass-morphism">
+            <h1>Diagrammi UML e OOP</h1>
+            <p>
+                UML (Unified Modeling Language) è uno standard internazionale per la modellazione 
+                di sistemi software complessi. Consente di rappresentare visivamente entità, 
+                relazioni e dinamiche all'interno di un progetto. Esistono diversi tipi di diagrammi UML. 
+                Di seguito uno schema raffigurante i principali tipi di diagrammi:
+            </p>
+            <br/><br/><br/>
+            <img src="assets/uml.png" class="img" />
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="glass-morphism">
+            <h1>Modellazione Strutturale e Tipi di Diagrammi</h1><br/><br/>
+            <p>
+                <strong>Modellazione Strutturale:</strong> Mostra le entità principali del sistema e le loro relazioni statiche. Include elementi come classi, interfacce, componenti, e nodi.
+            </p>
+            <p>
+                <strong>Tipi di Diagrammi:</strong><br>
+                <strong>Vista Statica (Class Diagram):</strong> Rappresenta le classi del sistema, i loro attributi, metodi e relazioni statiche.<br>
+                <strong>Vista Dinamica (Object Diagram):</strong> Fornisce uno snapshot di istanze di classi (oggetti) in un momento specifico, illustrando la loro struttura e interazioni.
+            </p>
+            <p>
+                <strong>Diagrammi di Implementazione:</strong><br>
+                <strong>Component Diagram:</strong> Mostra come le componenti software interagiscono.<br>
+                <strong>Deployment Diagram:</strong> Illustra la distribuzione fisica delle componenti su hardware.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="glass-morphism">
+            <h1>Concetti fondamentali</h1>
+            <p>
+                <strong>Oggetti:</strong><br/>
+                Sono istanze di una classe.<br/>
+                Incapsulano dati e operazioni, rendendo i dati accessibili solo tramite metodi dedicati (incapsulamento).
+            </p>
+            <p>
+                <strong>Operazioni e Metodi:</strong><br>
+                Le funzioni usate nell'analisi vengono chiamate operazioni.<br/>
+                Durante la progettazione diventano metodi.
+            </p>
+            <p>
+                <strong>Incapsulamento:</strong><br/>
+                Nasconde i dettagli interni dell'oggetto, esponendo solo un'interfaccia pubblica.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="glass-morphism">
+            <h2>STRUTTURA DI UNA CLASSE</h2><br/><br/>
+            <div class="code-block">
+                <pre>
+class Conto {
+    - numero: int
+    - correntista: String
+    - saldo: double
+
+    + create(): void
+    + deposito(importo: double): void
+    + prelievo(importo: double): void
+}
+                </pre>
+            </div><br/><br/>
+            <p> <p>Mostrata come un rettangolo suddiviso in tre sezioni:</p>
+            <ul>
+                <li><h2><strong>Nome della classe.</strong></h2></li>
+                <li><strong>Attributi:</strong> specificati con la sintassi <em>nome: tipo = valore di default</em>.</li>
+                <li><strong>Operazioni o metodi:</strong> scritti come <em>metodo(lista_parametri): tipo_di_restituzione</em>.</li>
+            </ul>
+            <h2><strong>Visibilità:</strong></h2>
+            <ul>
+                <li><strong>+</strong> (Pubblica): Accessibile da chiunque.</li>
+                <li><strong>-</strong> (Privata): Accessibile solo dalla classe stessa.</li>
+                <li><strong>#</strong> (Protetta): Accessibile solo dalla classe e dalle sue sottoclassi.</li>
+                <li><strong>~</strong> (Package): Accessibile da tutte le classi dello stesso package.</li>
+            </ul>
+                </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="glass-morphism">
+            <h2>Relazioni</h2>
+            <p>Relazioni tra classi e istanze:</p>
+            <div class="code-block">
+                <pre>
+Cliente ---- 1 ---- * ---- Ordine
+Ordine ---- 1 ---- * ---- LineaOrdine
+
+class Cliente {
+    + nome: String
+    + indirizzo: String
+}
+
+class Ordine {
+    + numero: int
+    + creaOrdine(): void
+}
+
+class LineaOrdine {
+    + quantità: int
+}
+                </pre>
+            </div>
+            <p><p>Descrive una connessione tra due o più classi.</p>
+            <ul>
+                <li>Può essere <strong>bidirezionale</strong> (entrambe le classi possono accedere alle altre) o <strong>unidirezionale</strong>.</li>
+                <li>
+                    Include la <strong>molteplicità</strong>, che specifica il numero di oggetti di una classe associabili agli oggetti di un’altra 
+                    (es.: <em>1..*</em> indica uno o più).
+                </li>
+            </ul>
+            <p><h2><strong>Sottotipo:</strong></h2></p>
+            <ul>
+                <li>Rappresenta l’<strong>ereditarietà</strong>, dove una sottoclasse eredita attributi, metodi e vincoli dalla superclasse.</li>
+                <li>Permette il <strong>riutilizzo</strong> e l'<strong>estensione</strong> del codice.</li>
+            </ul>
+                </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="glass-morphism">
+            <h2>Concetti avanzati</h2>
+            <p>Polimorfismo e Classi Astratte:</p>
+            <div class="code-block">
+                <pre>
+    abstract class Figura {
+        + area(): double
+    }
+    
+    class Rettangolo extends Figura {
+        + lunghezza: double
+        + larghezza: double
+    
+        + area(): double {
+            return lunghezza * larghezza;
+        }
+    }
+    
+    class Cerchio extends Figura {
+        + raggio: double
+    
+        + area(): double {
+            return Math.PI * Math.pow(raggio, 2);
+        }
+    }
+    
+    // Esempio di Polimorfismo
+    Figura f1 = new Rettangolo(5, 10);
+    Figura f2 = new Cerchio(7);
+    
+    console.log(f1.area()); // Output: 50
+    console.log(f2.area()); // Output: 153.94
+                </pre>
+            </div><br/><br/>
+            <p>
+                Il polimorfismo permette a oggetti di classi diverse di condividere lo stesso metodo (stessa segnatura) con implementazioni differenti.
+                <br/><br/>Le classi astratte definiscono una struttura comune che deve essere implementata nelle sottoclassi.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="glass-morphism">
+            <h1>Diagrammi Statici e Dinamici</h1>
+            <p>
+                <strong>Class Diagram:<strong><br/>
+                Mostra classi e relazioni statiche tra esse.<br/>
+                Usato per descrivere l’architettura del sistema a livello alto.
+            </p>
+            <p>
+                <strong>Object Diagram:</strong><br>
+                Snapshot del sistema a runtime, mostra istanze di classi (oggetti) e i loro valori specifici.
+            </p>
+            <p>
+                <strong>Incapsulamento:</strong><br/>
+                Nasconde i dettagli interni dell'oggetto, esponendo solo un'interfaccia pubblica.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="glass-morphism">
+            <h1>Molteplicità</h1>
+            <p>
+                Definisce quante istanze di una classe possono essere associate a un’altra. Esempi:<br/>
+                <strong>0..1:</strong>strong> Zero o una istanza.<br/>
+                <strong>*:</strong>strong> Zero o più istanze.<br/>
+                <strong>1..*:</strong>strong> Almeno una istanza.<br/>
+                <strong>1..3,7:</strong>strong> Tra una e tre istanze, oppure esattamente sette.<br/>
+                </p>
+            <p>
+                La navigabilità indica se una classe può accedere direttamente agli oggetti associati di un’altra classe.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="glass-morphism">
+            <h2>GLOSSARIO UML</h2>
+            <button class="interactive-button" onclick="toggleGlossary()">MOSTRA GLOSSARIO</button>
+            <div id="glossary-content" class="expandable-content">
+                <ul>
+                    <li><strong>Classe:</strong> Un'entità che rappresenta un concetto o un oggetto del dominio.</li>
+                    <li><strong>Oggetto:</strong> L'istanza di una classe.</li>
+                    <li><strong>Associazione:</strong> Una relazione tra due o più classi.</li>
+                    <li><strong>Molteplicità:</strong> Indica il numero di oggetti coinvolti in una relazione.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section text-center p-10">
+        <div class="glass-morphism p-10">
+            <h2 class="text-4xl mb-6">I BENEFICI DI UML</h2>
+            <p class="text-lg mb-4">UML offre numerosi vantaggi per lo sviluppo software, tra cui:</p>
+            <ul class="text-lg mb-6">
+                <li>• Visualizzazione chiara e precisa della struttura del sistema</li>
+                <li>• Facilitazione della comunicazione tra team di sviluppo</li>
+                <li>• Miglioramento della documentazione del progetto</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section text-center">
+        <div class="glass-morphism">
+            <h2>CONCLUSIONI E RISORSE</h2>
+            <p>UML è uno strumento potente per chiunque desideri progettare software in modo chiaro ed efficiente.</p>
+            <a href="https://app.diagrams.net/" class="interactive-button" target="_blank">Esplora draw.io</a>
+        </div>
+    </section>
+
+    <script>
+        
+    </script>
+</body>
+</html>

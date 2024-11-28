@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap');
+html, body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: white;
+    perspective: 1000px;
+}
+.parallax-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    animation: bg-shift 10s ease infinite;
+}
+@keyframes bg-shift {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(120deg); }
+}
+.section {
+    padding: 40px;
+    text-align: center;
+}
+.glass-morphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+h1, h2 {
+    margin: 20px 0;
+}
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+h2 {
+    font-size: 2rem;
+}
+p, li {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin: 0px 40px 40px 40px;
+    text-align: center;
+}
+.img {
+    width: 700px;
+    border-radius: 20px;
+}
+.code-block {
+    font-family: 'Courier New', monospace;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 20px;
+    color: #39ff14;
+    text-align: left;
+    overflow-x: auto;
+}
+.interactive-button {
+    background: #6b46c1;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.interactive-button:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+}
+.expandable-content {
+    display: none;
+    margin-top: 20px;
+    text-align: left;
+}
+.expandable-content.active {
+    display: block;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+ul li {
+    margin: 10px 0;
+}
+a {
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+    background: #3182ce;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 1.25rem;
+    transition: background 0.3s;
+}
+a:hover {
+    background: #63b3ed;
+}
